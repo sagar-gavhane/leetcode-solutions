@@ -1,56 +1,56 @@
-class ListNode {
-  constructor(val) {
-    this.val = val
-    this.next = null
-  }
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} l1
+ * @param {ListNode} l2
+ * @return {ListNode}
+ */
+
+function ListNode(val) {
+  this.val = val
+  this.next = null
 }
 
-class LinkedList {
-  constructor() {
-    this.head = null
-    this.tail = null
+const addTwoNumbers = function(l1, l2) {
+  let reminder = 0
+  let l3 = new ListNode(0)
+
+  let current = l3
+  while (l1 !== null || l2 !== null) {
+    const val1 = l1 ? l1.val : 0
+    const val2 = l2 ? l2.val : 0
+    const val3 = val1 + val2 + reminder
+
+    reminder = Math.floor(val3 / 10)
+    let lastDigit = val3 % 10
+
+    l3.next = new ListNode(lastDigit)
+
+    if (l1) l1 = l1.next
+    if (l2) l2 = l2.next
+
+    l3 = l3.next
   }
 
-  addNode(item) {
-    const node = new ListNode(item)
-
-    if (!this.head) {
-      this.head = node
-      this.tail = node
-      return this
-    }
-
-    this.tail.next = node
-    this.tail = node
-
-    return this
+  if (reminder > 0) {
+    l3.next = new ListNode(reminder)
   }
+
+  return current.next
 }
 
-function addTwoNumbers(l1, l2) {
-  let remainder = 0
+const l1 = new ListNode(5)
+l1.next = new ListNode(4)
+l1.next.next = new ListNode(3)
 
-  let current = l1
-
-  while (current !== null) {
-    console.log('++', l1)
-    current = current.next
-  }
-
-  return []
-}
-
-const l1 = new LinkedList()
-const l2 = new LinkedList()
-
-l1.addNode(2)
-l1.addNode(4)
-l1.addNode(3)
-
-l2.addNode(5)
-l2.addNode(6)
-l2.addNode(4)
+const l2 = new ListNode(5)
+l2.next = new ListNode(6)
+l2.next.next = new ListNode(4)
 
 const result = addTwoNumbers(l1, l2)
-
-// result, [7, 0, 8]
+console.log(result.toString())
