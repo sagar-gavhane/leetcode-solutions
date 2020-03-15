@@ -1,4 +1,4 @@
-const isValid = (expression) => {
+const validParentheses = (expression) => {
   if (!expression) return true
   if (expression.length % 2 !== 0) return false
 
@@ -30,3 +30,5 @@ const isValid = (expression) => {
 
   return !stack.length
 }
+
+export default validParentheses
