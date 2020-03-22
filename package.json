@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
+    "test:watchAll": "jest --watchAll",
     "prettier": "prettier --config ./.prettierrc \"src/**/*.+(js|jsx|ts|tsx|json|css|scss|md|html|yaml)\"",
     "format": "npm run prettier -- --write",
     "lint": "eslint src/**/*.js --fix"
